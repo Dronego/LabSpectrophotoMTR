@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="650" viewBox="0 0 1100 650" role="img" aria-labelledby="title desc">
+  <title id="title">Cablage ESP32-S3 TFT Feather vers Hamamatsu C12880MA</title>
+  <desc id="desc">Schema logique de cablage entre une carte Adafruit ESP32-S3 TFT Feather, un spectrometre Hamamatsu C12880MA, une adaptation analogique et deux sources lumineuses commandees.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .box { fill: #ffffff; stroke: #334155; stroke-width: 2; rx: 10; }
+      .subbox { fill: #eef6ff; stroke: #2563eb; stroke-width: 2; rx: 8; }
+      .warn { fill: #fff7ed; stroke: #ea580c; stroke-width: 2; rx: 8; }
+      .load { fill: #f0fdf4; stroke: #16a34a; stroke-width: 2; rx: 8; }
+      .title { font: 700 22px Arial, sans-serif; fill: #0f172a; }
+      .label { font: 600 16px Arial, sans-serif; fill: #0f172a; }
+      .small { font: 14px Arial, sans-serif; fill: #334155; }
+      .pin { font: 700 14px Arial, sans-serif; fill: #1e293b; }
+      .wire { stroke: #0f172a; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .wire2 { stroke: #2563eb; stroke-width: 3; fill: none; marker-end: url(#arrowBlue); }
+      .gnd { stroke: #475569; stroke-width: 3; fill: none; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f172a"/>
+    </marker>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1100" height="650"/>
+  <text class="title" x="40" y="48">LabSpectrophotoMTR - cablage de depart</text>
+  <text class="small" x="40" y="74">Premiere version : acquisition serie du C12880MA avec Adafruit ESP32-S3 TFT Feather.</text>
+
+  <rect class="box" x="70" y="130" width="300" height="360"/>
+  <text class="label" x="95" y="165">Adafruit ESP32-S3</text>
+  <text class="small" x="95" y="188">TFT Feather / Reverse TFT</text>
+  <text class="pin" x="95" y="240">GPIO5</text>
+  <text class="pin" x="95" y="295">GPIO6</text>
+  <text class="pin" x="95" y="350">GPIO9</text>
+  <text class="pin" x="95" y="405">A5 / GPIO8 / ADC1</text>
+  <text class="pin" x="95" y="455">GPIO11 / GPIO12</text>
+
+  <rect class="box" x="730" y="130" width="300" height="280"/>
+  <text class="label" x="755" y="165">Hamamatsu C12880MA</text>
+  <text class="small" x="755" y="188">Micro-spectrometre</text>
+  <text class="pin" x="910" y="240">CLK</text>
+  <text class="pin" x="910" y="295">ST</text>
+  <text class="pin" x="910" y="350">TRG</text>
+  <text class="pin" x="910" y="405">Video</text>
+
+  <rect class="warn" x="455" y="355" width="210" height="92"/>
+  <text class="label" x="484" y="390">Adaptation analogique</text>
+  <text class="small" x="493" y="416">Sortie vers ADC</text>
+  <text class="small" x="510" y="436">3,3 V max</text>
+
+  <rect class="load" x="455" y="490" width="210" height="95"/>
+  <text class="label" x="501" y="524">Sources</text>
+  <text class="small" x="483" y="550">LED blanche : GPIO11</text>
+  <text class="small" x="486" y="570">Laser 404 : GPIO12</text>
+
+  <path class="wire" d="M 170 235 C 360 235, 540 235, 905 235"/>
+  <text class="small" x="430" y="222">SPEC_CLK</text>
+  <path class="wire" d="M 170 290 C 360 290, 540 290, 905 290"/>
+  <text class="small" x="435" y="277">SPEC_ST</text>
+  <path class="wire" d="M 170 345 C 360 345, 540 345, 905 345"/>
+  <text class="small" x="430" y="332">SPEC_TRG reserve</text>
+
+  <path class="wire2" d="M 905 400 C 800 400, 740 400, 665 400"/>
+  <text class="small" x="740" y="388">Video</text>
+  <path class="wire2" d="M 455 400 C 400 400, 345 400, 260 400"/>
+  <text class="small" x="330" y="388">SPEC_VIDEO</text>
+
+  <path class="wire" d="M 260 455 C 340 500, 390 537, 455 537"/>
+  <text class="small" x="285" y="505">commandes</text>
+
+  <path class="gnd" d="M 220 490 L 220 565 L 890 565 L 890 410"/>
+  <text class="small" x="505" y="610">Masse commune obligatoire entre ESP32-S3, C12880MA et drivers des sources lumineuses.</text>
+</svg>
